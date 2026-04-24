@@ -3,11 +3,9 @@
     "description": "Theme with a dark aesthetic and modular-inspired look, offering clarity, flexibility, and an enhanced user experience.",
     "author": "SpaceEnergy",
     "github": {
-        "owner": "SpaceTheme",
-        "repo_name": "Steam"
+        "owner": "kapuchai",
+        "repo_name": "SpaceTheme"
     },
-    "funding": { "kofi": "spacetheme" },
-    "discord_support": { "inviteCodeExcludingLink": "7Zv8Xz3Vzn" },
     "tags": [ "WIP", "Modular", "Dark", "Customizable"],
     "header_image": "https://raw.githubusercontent.com/SpaceTheme/Steam/main/.github/assets/banner.webp",
     "splash_image": "https://raw.githubusercontent.com/SpaceTheme/Steam/main/.github/assets/preview/preview.webp",
