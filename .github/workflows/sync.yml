@@ -1,0 +1,25 @@
+name: Sync with upstream
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # every 6 hours
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Sync upstream
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
+        with:
+          target_sync_branch: main
+          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          upstream_sync_branch: main
+          upstream_sync_repo: SpaceTheme/Steam
+          upstream_repo_access_token: ${{ secrets.GITHUB_TOKEN }}
