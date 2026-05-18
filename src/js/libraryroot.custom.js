@@ -1,54 +1,4 @@
-const waitForElement = (selector, parent = document) => new Promise((resolve) => {
-    const el = parent.querySelector(selector);
-    if (el) {
-        resolve(el);
-    }
-
-    const observer = new MutationObserver(() => {
-        const el = parent.querySelector(selector);
-        if (!el) {
-            return;
-        }
-
-        resolve(el);
-        observer.disconnect();
-    });
-
-    observer.observe(document.body, {
-        subtree: true,
-        childList: true,
-    });
-});
-
-// Container/Element Tracker Utility
-// Tracks DOM element references and adds basic lifecycle hooks
-const createContainerTracker = (selector, { onCleanup, onSetup, onUpdate } = {}) => {
-    let container = null;
-
-    const rebind = () => {
-        const nextContainer = document.querySelector(selector);
-
-        if (nextContainer === container) {
-            return;
-        }
-
-        container = nextContainer;
-
-        if (!container) {
-            onCleanup?.();
-            return;
-        }
-
-        onSetup?.();
-        onUpdate?.();
-    };
-
-    return {
-        rebind,
-        getContainer: () => container,
-        setContainer: (newContainer) => { container = newContainer; },
-    };
-};
+import { waitForElement, createContainerTracker } from './utils.js';
 
 // Create Loading Screen
 const createLoadingDiv = () => {
@@ -81,7 +31,7 @@ waitForElement('.Rp8QOGJ2DypeDniMnRBhr').then(() => {
 
 
 // Store Sidebar Width half fix
-function syncWidthIfTargetHidden() {
+async function syncWidthIfTargetHidden() {
     const sourceClass = '._9sPoVBFyE_vE87mnZJ5aB';
     const targetClass = '.RGNMWtyj73_-WdhflrmuY';
 
@@ -92,13 +42,14 @@ function syncWidthIfTargetHidden() {
 
     const setWidth = () => {
         const width = sourceEl.style.width;
+        const scrollbarWidth = '16px';
         if (width) {
-            targetEl.style.width = width;
+            targetEl.style.flex = `0 0 calc(${width} + ${scrollbarWidth})`;
         }
     };
 
     const removeWidth = () => {
-        targetEl.style.removeProperty('width');
+        targetEl.style.removeProperty('flex');
     };
 
     const handleTargetDisplayChange = () => {
@@ -164,19 +115,21 @@ function syncWidthIfTargetHidden() {
         onSetup: setupElements,
     });
 
-    const rootObserver = new MutationObserver(() => sourceTracker.rebind());
+    const rootObserver = new MutationObserver(async () => await sourceTracker.rebind());
     rootObserver.observe(document.body, {
         subtree: true,
         childList: true,
     });
 
-    setupElements();
+    await setupElements();
 }
-
 syncWidthIfTargetHidden();
 
+
+
+
 // Custom hover effect for game items
-function setupGamesHovers() {
+async function setupGamesHovers() {
     const gamesContainerSelector = '._1ijTaXJJA5YWl_fW2IxcaT .ReactVirtualized__Grid__innerScrollContainer';
     const itemSelector = '._2-O4ZG0KrnSrzISHBKctFQ';
     const separatorSelector = '._2RggXvVkWMDvvxFegjtKso';
@@ -278,13 +231,114 @@ function setupGamesHovers() {
         onUpdate: scheduleHoverUpdate,
     });
 
-    const rootObserver = new MutationObserver(() => containerTracker.rebind());
+    const rootObserver = new MutationObserver(async () => await containerTracker.rebind());
     rootObserver.observe(document.body, {
         subtree: true,
         childList: true,
     });
 
-    containerTracker.rebind();
+    await containerTracker.rebind();
 }
-
 setupGamesHovers();
+
+
+
+// Sync Userpanel and Downloadbar width with Store sidebar
+function syncUserpanelWidth() {
+    const sourceClass = '._9sPoVBFyE_vE87mnZJ5aB';
+    const userpanelSelector = '._3cykd-VfN_xBxf3Qxriccm._1-9sir4j_KQiMqdkZjQN0u';
+    const downloadBarSelector = '._1_yS5UP7el0aN4vntx3dx';
+
+    let sourceEl = null;
+    let userpanelEl = null;
+    let downloadBarEl = null;
+    let sourceObserver = null;
+
+    const setWidth = () => {
+        if (!sourceEl) return;
+        const computedWidth = window.getComputedStyle(sourceEl).width;
+        if (computedWidth && computedWidth !== 'auto') {
+            if (userpanelEl) {
+                userpanelEl.style.width = computedWidth;
+            }
+            if (downloadBarEl) {
+                downloadBarEl.style.width = computedWidth;
+            }
+        }
+    };
+
+    const bindObservers = () => {
+        if (!sourceEl || (!userpanelEl && !downloadBarEl)) return;
+
+        sourceObserver?.disconnect();
+
+        sourceObserver = new MutationObserver((mutations) => {
+            for (const mutation of mutations) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                    setWidth();
+                }
+            }
+        });
+
+        sourceObserver.observe(sourceEl, {
+            attributes: true,
+            attributeFilter: ['style'],
+        });
+
+        setWidth();
+    };
+
+    const setupElements = () => {
+        sourceEl = document.querySelector(sourceClass);
+        userpanelEl = document.querySelector(userpanelSelector);
+        downloadBarEl = document.querySelector(downloadBarSelector);
+
+        if (sourceEl && (userpanelEl || downloadBarEl)) {
+            bindObservers();
+        }
+    };
+
+    window.addEventListener('resize', setWidth);
+    new ResizeObserver(setWidth).observe(document.documentElement);
+    window.visualViewport?.addEventListener('resize', setWidth);
+
+    const rootObserver = new MutationObserver(() => setupElements());
+
+    rootObserver.observe(document.body, {
+        subtree: true,
+        childList: true,
+    });
+
+    setupElements();
+}
+syncUserpanelWidth();
+
+
+
+
+// Create userpanel button container and move buttons
+(async () => {
+    await waitForElement('._3x1HklzyDs4TEjACrRO2tB'); // wait for game panel to load first
+    // Userpanel
+    const friendButton = await waitForElement('._1TdaAqMFadi0UTqilrkelR');
+    const familyButton = document.querySelector('._13vrqU6oOqmmxrsZSW5O39');
+    const parent = await waitForElement('._3cykd-VfN_xBxf3Qxriccm');
+
+    const buttonContainer = document.createElement('div');
+    buttonContainer.className = 'userpanel-buttoncontainer';
+  
+    const buttons = parent.querySelectorAll('div._3cykd-VfN_xBxf3Qxriccm > div');
+    const buttonsToMove = Array.from(buttons).filter((button) => {
+        return button.querySelector('._2Szzh5sKyGgnLUR870zbDE');
+    });
+  
+    buttonsToMove.forEach((button) => {
+        buttonContainer.appendChild(button);
+    });
+    
+    buttonContainer.appendChild(friendButton);
+    if (familyButton) {
+        buttonContainer.appendChild(familyButton);
+    }
+    parent.appendChild(buttonContainer);
+})();

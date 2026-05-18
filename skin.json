@@ -43,16 +43,30 @@
         },
 
 
-        "Always show sidebar": {
-            "description": "Always show the sidebar \n (If you have this option on Disabled, and you use the \"Userpannel\" or \"Sidebar only on hover\" option, this option will be overwritten)",
-            "default": "Enabled",
+        "Sidebar on right": {
+            "description": "Show the sidebar on the right side",
+            "default": "no",
             "tab": "General",
             "section": "Sidebar",
             "values": {
-                "Enabled": {
+                "no": {},
+                "yes": {
+                    "TargetCss": { "affects": ["^Steam$"], "src": "options/general/sidebarOnRight.css" }
+                }
+            }
+        },
+
+
+        "Always show sidebar": {
+            "description": "Always show the sidebar don't matter on which page (Except the download page) \n\n (If you have this option disabled, the userpanel and download bar only show when you in library. I recommend to enable then the \"Sidebar only on hover\" option, to still have access to the userpanel and download bar in the store and community)",
+            "default": "yes",
+            "tab": "General",
+            "section": "Sidebar",
+            "values": {
+                "no": {},
+                "yes": {
                     "TargetCss": { "affects": ["^Steam$"], "src": "options/general/alwaysShowSidebar.css" }
-                },
-                "Disabled": {}
+                }
             }
         },
 
@@ -85,11 +99,25 @@
         },
 
 
+        "Always show download bar": {
+            "description": "Always show the download bar",
+            "default": "no",
+            "tab": "General",
+            "section": "Sidebar",
+            "values": {
+                "no": {},
+                "yes": {
+                    "TargetCss": { "affects": ["^Steam$"], "src": "options/general/alwaysShowDownloadbar.css" }
+                }
+            }
+        },
+
+
         "Wallet balance": {
             "description": "Hide wallet balance",
             "default": "no",
             "tab": "General",
-            "section": "Userpannel",
+            "section": "Userpanel",
             "values": {
                 "no": {},
                 "yes": {
@@ -100,70 +128,70 @@
 
 
         "Steam VR button": {
-            "description": "Hide Steam VR button from userpannel",
+            "description": "Hide Steam VR button from userpanel",
             "default": "no",
             "tab": "General",
-            "section": "Userpannel",
+            "section": "Userpanel",
             "values": {
                 "no": {},
                 "yes": {
-                    "TargetCss": { "affects": ["^Steam$"], "src": "options/general/userpannel/buttons/steamVr.css" }
+                    "TargetCss": { "affects": ["^Steam$"], "src": "options/general/userpanel/buttons/steamVr.css" }
                 }
             }
         },
 
 
         "Big Picture Mode button": {
-            "description": "Hide Big Picture Mode button from userpannel",
+            "description": "Hide Big Picture Mode button from userpanel",
             "default": "no",
             "tab": "General",
-            "section": "Userpannel",
+            "section": "Userpanel",
             "values": {
                 "no": {},
                 "yes": {
-                    "TargetCss": { "affects": ["^Steam$"], "src": "options/general/userpannel/buttons/bpm.css" }
+                    "TargetCss": { "affects": ["^Steam$"], "src": "options/general/userpanel/buttons/bpm.css" }
                 }
             }
         },
 
 
         "News button": {
-            "description": "Hide News button from userpannel",
+            "description": "Hide News button from userpanel",
             "default": "no",
             "tab": "General",
-            "section": "Userpannel",
+            "section": "Userpanel",
             "values": {
                 "no": {},
                 "yes": {
-                    "TargetCss": { "affects": ["^Steam$"], "src": "options/general/userpannel/buttons/news.css" }
+                    "TargetCss": { "affects": ["^Steam$"], "src": "options/general/userpanel/buttons/news.css" }
                 }
             }
         },
 
 
         "Notification button": {
-            "description": "Hide Notification button from userpannel",
+            "description": "Hide Notification button from userpanel",
             "default": "no",
             "tab": "General",
-            "section": "Userpannel",
+            "section": "Userpanel",
             "values": {
                 "no": {},
                 "yes": {
-                    "TargetCss": { "affects": ["^Steam$"], "src": "options/general/userpannel/buttons/notification.css" }
+                    "TargetCss": { "affects": ["^Steam$"], "src": "options/general/userpanel/buttons/notification.css" }
                 }
             }
         },
 
 
         "Friend list button": {
-            "description": "Hide Friend list button from userpannel (only with Userpannel experimental)",
+            "description": "Hide Friend list button from userpanel (only with userpanel experimental)",
             "default": "no",
             "tab": "General",
-            "section": "Userpannel",
+            "section": "Userpanel",
             "values": {
                 "no": {},
                 "yes": {
-                    "TargetCss": { "affects": ["^Steam$"], "src": "options/general/userpannel/buttons/friendList.css" }
+                    "TargetCss": { "affects": ["^Steam$"], "src": "options/general/userpanel/buttons/friendList.css" }
                 }
             }
         },
@@ -257,21 +285,6 @@
                 "no": {},
                 "yes": {
                     "TargetCss": { "affects": [".zXrpABNQHpWKgSzqnGlL"], "src": "options/general/achievementNotifaction.css" }
-                }
-            }
-        },
-
-
-        "Userpannel": {
-            "description": "Moves the user buttons and the download bar to the game sidebar",
-            "default": "no",
-            "tab": "General",
-            "section": "Experimental",
-            "values": {
-                "no": {},
-                "yes": {
-                    "TargetCss": { "affects": ["^Steam$"], "src": "options/general/userpannel/userpannel.css" },
-                    "TargetJs": { "affects": ["^Steam$"], "src": "options/general/userpannel/userpannel.js" }
                 }
             }
         },
@@ -424,7 +437,7 @@
             "description": "The best support for https://spacetheme.net/#steam-custom-artworks ",
             "default": "no",
             "tab": "Library",
-            "section": "Pined",
+            "section": "Pinned",
             "values": {
                 "no": {},
                 "yes": {
@@ -552,6 +565,20 @@
         },
 
 
+        "Playbar in Banner": {
+            "description": "Show playbar in banner",
+            "default": "no",
+            "tab": "Library",
+            "section": "Gamepage",
+            "values": {
+                "no": {},
+                "yes": {
+                    "TargetCss": { "affects": ["^Steam$"], "src": "options/library/gamepage/playbarInBanner.css" }
+                }
+            }
+        },
+
+
         "Always show game infos": {
             "description": "Always show game infos on the game page",
             "default": "no",
@@ -652,6 +679,10 @@
         {
             "MatchRegexString": ".*",
             "TargetCss": "src/icons/fluent/fluent.css"
+        },
+        {
+            "MatchRegexString": ".*",
+            "TargetJs": "src/js/utils.js"
         },
         {
             "MatchRegexString": "^Steam$",
