@@ -276,20 +276,6 @@
         },
 
 
-        "Achievement Notification": {
-            "description": "Hide the Achievment Notification (Sound is still there)",
-            "default": "no",
-            "tab": "General",
-            "section": "Other",
-            "values": {
-                "no": {},
-                "yes": {
-                    "TargetCss": { "affects": [".zXrpABNQHpWKgSzqnGlL"], "src": "options/general/achievementNotifaction.css" }
-                }
-            }
-        },
-
-
         "Game Overlay": {
             "description": "Game Overlay from the concept",
             "default": "no",
