@@ -123,6 +123,7 @@ body ._1N7O3VXbkpN2z55HsSDZsi .O7VJKyPtoS7TXCr6mrwCr ._1qtg3ASXX4ClYiTHPq9Tkl .Z
     margin: 0 3px;
     border-radius: 8px;
     background-color: rgb(var(--st-color-3));
+    transition: all 0.3s ease-in-out;
 }
 
 body ._1N7O3VXbkpN2z55HsSDZsi .O7VJKyPtoS7TXCr6mrwCr ._1qtg3ASXX4ClYiTHPq9Tkl .ZQrtMhZB1tpkd2bgBXyIF.cwA5j4AsP5OB7WjWuOlFv {
