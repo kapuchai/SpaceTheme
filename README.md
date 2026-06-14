@@ -158,7 +158,7 @@
     - [ ] Dropdown
     - [ ] Search
     - [ ] (WIP) Color
-    - [ ] (WIP) Emoji picker
+    - [x] Emoji picker
     - [ ] Checkbox
       - [x] Checkbox Switch
     - [ ] (WIP) Radio
