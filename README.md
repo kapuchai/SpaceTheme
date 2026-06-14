@@ -155,7 +155,7 @@
   - [ ] (WIP) Steam Settings
   - [ ] (WIP) Inputs (all types)
   - [ ] Recordings & Screenshots
-  - [ ] Update News
+  - [x] Special Offers
   - [ ] Game server window
   - [ ] Players window
   - [ ] Add non-steam game window
