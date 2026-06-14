@@ -1,7 +1,0 @@
-body a[href] {
-    font-weight: 400 !important;
-    color: rgb(var(--st-blue)) !important;
-}
-body a[href]:hover {
-    color: rgb(var(--st-blue-hover)) !important;
-}
