@@ -88,10 +88,10 @@ div.ModalPosition_TopBar {
 
 
 /* Links */
-body a[href] {
+body a[href]:not(:has(> *)) {
     font-weight: 400 !important;
     color: rgb(var(--st-blue)) !important;
 }
-body a[href]:hover {
+body a[href]:not(:has(> *)):hover {
     color: rgb(var(--st-blue-hover)) !important;
 }
