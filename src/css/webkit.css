@@ -47,10 +47,20 @@
 
 
 
+
+/*
+*
+! Remove after plugin is fixed
+*
+*/
+.ewJx-kmPr-8- {
+  display: none !important;
+}
+
+
 /*
 & Base
 */
-
 body {
     background: transparent !important;
     background-color: transparent !important;
