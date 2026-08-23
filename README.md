@@ -155,7 +155,7 @@ My deadline is 1 April 2027, i planned to finish this theme until then. When i d
   - [ ] (WIP) Notifications
   - [ ] (WIP) Steam Settings
     - [x] Account
-    - [ ] Family
+    - [x] Family
     - [ ] Notifications
     - [ ] Library
     - [ ] Download
