@@ -49,6 +49,7 @@
 - [Size on Disk](https://steambrew.app/plugin?id=e73371b61eef)
 
 ## Roadmap
+My deadline is 1 April 2027, i planned to finish this theme until then. When i don't make it this theme will be paused and i work again on the Discord theme and other themes.
 <details>
   <summary>Store</summary>
   
