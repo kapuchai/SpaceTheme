@@ -141,6 +141,7 @@ body .a3nhjc9lykk- {
 }
 
 body .discount_block .discount_pct,
+.game_bg.application .game_description_column .discount_pct,
 body .a3nhjc9lykk- .XXn-kJ7FSrw- {
     height: unset !important;
     padding: 4px 6px !important;
@@ -153,6 +154,7 @@ body .a3nhjc9lykk- .XXn-kJ7FSrw- {
 }
 
 body .discount_block .discount_prices,
+.game_bg.application .game_description_column .discount_prices,
 body .a3nhjc9lykk- .ME2eMO7C1Tk- {
     display: flex !important;
     flex-direction: column !important;
@@ -163,6 +165,7 @@ body .a3nhjc9lykk- .ME2eMO7C1Tk- {
 }
 
 body .game_purchase_discount .discount_original_price,
+.game_bg.application .game_description_column .discount_original_price,
 body .a3nhjc9lykk- .ywNldZ-YzEE- {
     position: relative !important;
     top: 0 !important;
@@ -172,6 +175,7 @@ body .a3nhjc9lykk- .ywNldZ-YzEE- {
 }
 
 body .discount_block .discount_prices .discount_final_price,
+.game_bg.application .game_description_column .discount_final_price,
 body .a3nhjc9lykk- .DOnsaVcV0Is- {
     padding: 0 !important;
     font-size: 14px !important;
