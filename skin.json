@@ -337,6 +337,18 @@
                 }
             }
         },
+        "Send a Gift Card button": {
+            "description": "Hide the Send a Gift Card button",
+            "default": "no",
+            "tab": "Store",
+            "section": "Home",
+            "values": {
+                "no": {},
+                "yes": {
+                    "TargetCss": { "affects": ["https://.*\\.steampowered\\.com(/.*)?"], "src": "options/store/home/giftCardButton.css" }
+                }
+            }
+        },
 
         "Broadcast": {
             "description": "Hide broadcasts on the store gamepage",
@@ -641,6 +653,18 @@
         },
 
 
+        "Favorite friends status background": {
+            "description": "When the \"Compact favorite friends area\" is on then the cards will show a status background so you know if the user is online/offline/ingame",
+            "default": "yes",
+            "tab": "Friends & Chat",
+            "section": "Firends list",
+            "values": {
+                "no": {},
+                "yes": {
+                    "TargetCss": { "affects": [".friendsui-container"], "src": "options/friendsAndChat/list/compactFavFriendsStatusBackground.css" }
+                }
+            }
+        },
         "Hide group chat": {
             "description": "Hides the group chat section in the friends list",
             "default": "no",
